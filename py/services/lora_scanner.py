@@ -14,7 +14,7 @@ class LoraScanner(ModelScanner):
     
     def __init__(self):
         # Define supported file extensions
-        file_extensions = {'.safetensors'}
+        file_extensions = {'.safetensors', '.ckpt'}
         
         # Initialize parent class with ModelHashIndex
         super().__init__(

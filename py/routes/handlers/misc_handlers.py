@@ -1925,9 +1925,9 @@ class TrainedWordsHandler:
                 return web.json_response(
                     {"success": False, "error": "File not found"}, status=404
                 )
-            if not file_path.endswith(".safetensors"):
+            if not (file_path.endswith(".safetensors") or file_path.endswith(".ckpt")):
                 return web.json_response(
-                    {"success": False, "error": "File must be a safetensors file"},
+                    {"success": False, "error": "File must be a safetensors or ckpt file"},
                     status=400,
                 )
 

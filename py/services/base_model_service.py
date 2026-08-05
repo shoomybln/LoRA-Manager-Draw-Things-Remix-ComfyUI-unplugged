@@ -1095,7 +1095,7 @@ class BaseModelService(ABC):
             path_name = f"{folder}/{file_name_no_ext}".replace("\\", "/") if folder else file_name_no_ext
 
             if name_no_ext == file_name_no_ext or name_no_ext == path_name:
-                civitai_data = model.get("civitai", {})
+                civitai_data = model.get("civitai") or {}
                 model_id = civitai_data.get("modelId")
                 version_id = civitai_data.get("id")
 
@@ -1120,7 +1120,7 @@ class BaseModelService(ABC):
                     best_fallback = model
 
         if best_fallback:
-            civitai_data = best_fallback.get("civitai", {})
+            civitai_data = best_fallback.get("civitai") or {}
             model_id = civitai_data.get("modelId")
             if model_id:
                 version_id = civitai_data.get("id")

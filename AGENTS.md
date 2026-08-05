@@ -155,11 +155,13 @@ npm run test:coverage       # Generate coverage report
 ## Frontend UI Architecture
 
 ### 1. Standalone Web UI
+
 - Location: `./static/` and `./templates/`
 - Tech: Vanilla JS + CSS, served by standalone server
 - Tests via npm in root directory
 
 ### 2. ComfyUI Custom Node Widgets
+
 - Location: `./web/comfyui/` (Vanilla JS) + `./vue-widgets/` (Vue)
 - Primary styles: `./web/comfyui/lm_styles.css` (NOT `./static/css/`)
 - Vue builds to `./web/comfyui/vue-widgets/`, typecheck via `vue-tsc`

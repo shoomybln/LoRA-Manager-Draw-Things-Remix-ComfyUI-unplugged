@@ -258,7 +258,10 @@ class MetadataManager:
                 )
             
             # Try to extract model-specific metadata
-            # await MetadataManager._enrich_metadata(metadata, real_path)
+            # Draw Things .ckpt files (SQLite format) are enriched here so the
+            # base model is detected from their tensor keys during the initial scan.
+            if real_path.lower().endswith(".ckpt"):
+                await MetadataManager._enrich_metadata(metadata, real_path)
             
             # Save the created metadata
             logger.info(f"Creating new .metadata.json for {file_path} (Reason: No existing metadata found)")

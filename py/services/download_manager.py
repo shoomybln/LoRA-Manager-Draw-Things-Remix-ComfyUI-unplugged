@@ -2315,6 +2315,8 @@ class DownloadManager:
                 ".pkl",
                 ".sft",
             }
+        if model_type == "lora":
+            return {".safetensors", ".ckpt"}
         return {".safetensors"}
 
     async def _extract_model_files_from_archive(

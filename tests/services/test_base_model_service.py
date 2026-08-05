@@ -1219,6 +1219,42 @@ async def test_get_model_civitai_url_uses_configured_host():
 
 
 @pytest.mark.asyncio
+async def test_get_model_civitai_url_returns_none_when_civitai_is_null():
+    raw_data = [
+        {
+            "file_name": "local.ckpt",
+            "civitai": None,
+        }
+    ]
+
+    class CacheStub:
+        def __init__(self, raw_data):
+            self.raw_data = raw_data
+
+    class ScannerStub:
+        def __init__(self, cache):
+            self._cache = cache
+
+        async def get_cached_data(self, *_, **__):
+            return self._cache
+
+    service = DummyService(
+        model_type="stub",
+        scanner=ScannerStub(CacheStub(raw_data)),
+        metadata_class=BaseModelMetadata,
+        settings_provider=StubSettings({}),
+    )
+
+    result = await service.get_model_civitai_url("local.ckpt")
+
+    assert result == {
+        "civitai_url": None,
+        "model_id": None,
+        "version_id": None,
+    }
+
+
+@pytest.mark.asyncio
 async def test_get_model_civitai_url_falls_back_when_host_setting_is_not_a_string():
     raw_data = [
         {
