@@ -79,10 +79,13 @@ class StubMetadataSync:
 @dataclass
 class StubSettings:
     enable_metadata_archive_db: bool = False
+    civitai_name_fallback: bool = True
 
     def get(self, key: str, default: Any = None) -> Any:
         if key == "enable_metadata_archive_db":
             return self.enable_metadata_archive_db
+        if key == "civitai_name_fallback":
+            return self.civitai_name_fallback
         return default
 
 
@@ -264,7 +267,7 @@ async def test_bulk_metadata_refresh_skips_confirmed_not_found_models(
     ]
     service = MockModelService(scanner)
     metadata_sync = StubMetadataSync()
-    settings = StubSettings(enable_metadata_archive_db=False)
+    settings = StubSettings(enable_metadata_archive_db=False, civitai_name_fallback=False)
     progress = ProgressCollector()
 
     async def fake_hydrate(model_data: Dict[str, Any]) -> Dict[str, Any]:
@@ -315,7 +318,9 @@ async def test_bulk_metadata_refresh_skips_when_archive_checked(
     ]
     service = MockModelService(scanner)
     metadata_sync = StubMetadataSync()
-    settings = StubSettings(enable_metadata_archive_db=True)
+    settings = StubSettings(
+        enable_metadata_archive_db=True, civitai_name_fallback=False
+    )
     progress = ProgressCollector()
 
     async def fake_hydrate(model_data: Dict[str, Any]) -> Dict[str, Any]:
