@@ -1,3 +1,27 @@
+👋 **Hey there! I’m new to coding and this is my very first fork.**
+
+I’m a huge fan of the original [ComfyUI-Lora-Manager](https://github.com/willmiao/ComfyUI-Lora-Manager) — it’s an incredible tool. This project is a labor of love to adapt it for users like me who work with the **Draw Things** app instead of ComfyUI. I’m learning as I go, so feedback, patience, and contributions are more than welcome!
+
+**About LoRA-Manager-Draw-Things-Remix-ComfyUI-unplugged**
+
+I’m a sincere fan of the original ComfyUI LoRA Manager—it’s an amazing tool that revolutionizes model organization and workflow. The original project is a masterpiece for the ComfyUI ecosystem.
+
+However, I don’t use ComfyUI. My daily driver is **Draw Things**, a brilliantly optimized Mac/iOS app for local AI image generation. Draw Things uses a different file format for LoRAs: **.ckpt instead of .safetensors**.
+
+This created a constant friction in my workflow. I needed the powerful management features of LoRA Manager, but for .ckpt files, not .safetensors. And I needed it to work outside of the ComfyUI node system.
+
+**What This Fork Does:**
+
+This is a “development fork” made out of necessity, not disagreement. I’ve forked the code (not the name) to adapt the excellent LoRA Manager for:
+
+1. **Draw Things compatibility** – Full support for .ckpt LoRA format used by the Draw Things app.
+2. **ComfyUI-unplugged** – All functionality runs independently, without requiring a ComfyUI instance.
+
+**My Commitment**:
+
+I mean no ill will toward the original project. On the contrary, I hope this fork can serve as a bridge for Mac/iOS users in the Draw Things community who need similar management tools. I will keep this fork compatible with the original project’s spirit and welcome contributions from any competent source—including all original committers, who retain commit access here.
+
+
 # ComfyUI LoRA Manager
 
 > **Revolutionize your workflow with the ultimate LoRA companion for ComfyUI!**
